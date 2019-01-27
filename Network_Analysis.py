@@ -4,10 +4,9 @@
 import Interactions
 import pandas as pd
 import networkx as nx
-import random as rd
 import markov_clustering as mc
 import community
-import matplotlib.pyplot as plt
+from scipy.stats import hypergeom
 import os
 
 
@@ -61,11 +60,32 @@ def create_graph(union_adjacency, sgi_adjacency, I_adjacency):
 #def lcc():   
     
     
-def clustering():
+def clustering(G_lcc_union, G_lcc_I):
+    # MCL clustering Union_lcc 
+    matrix_union = nx.to_scipy_sparse_matrix(G_lcc_union)
+    result_union_mcl = mc.run_mcl(matrix_union)           
+    clusters_union = mc.get_clusters(result_union_mcl)
+    
+    # MCL clustering Intersection_lcc 
+    matrix_I = nx.to_scipy_sparse_matrix(G_lcc_I)
+    result_I_mcl = mc.run_mcl(matrix_I)           
+    clusters_I = mc.get_clusters(result_I_mcl)
+    
+    # Louvain clustering Union_lcc
     
     
-def save_results():
-    G_union, G_sgi, G_I, G_lcc_union, G_lcc_I = create_graph(union_adjacency, sgi_adjacency, I_adjacency)
+    
+    
+    
+    
+    
+   
+    
+    
+    
+    return
+    
+def save_results(G_union, G_sgi, G_I, G_lcc_union, G_lcc_I):
     f = open('Network_meesures.txt', 'w')
     
     ### Results of G_Union

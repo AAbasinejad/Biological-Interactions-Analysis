@@ -56,13 +56,17 @@ def main():
     Bi.Basic_informations(SG, iid)
 
     # Interactions
-
+    SGI_biogrid, SGI_iid = i.seed_gene_interactons(SG, biogrid, iid)
+    union_biogrid, union_iid, all_biogrid_interactomes, all_iid_interactomes = i.union_interactions(SG, biogrid, iid)
+    I_interactions = i.intersection_interactions(SG, biogrid, iid)
+    SGI_integrated, union_integrated = i._integrations(SG, biogrid,iid)
+    interactions_detail = i.detail_interactions_results(union_biogrid, union_iid, all_biogrid_interactomes, all_iid_interactomes)
+    i.save_results(SGI_biogrid, SGI_iid, union_biogrid, union_iid, all_biogrid_interactomes, all_iid_interactomes, 
+                                I_interactions, SGI_integrated, union_integrated, interactions_detail)
     
-
-
     # Netwrok analysis
-    union_adjacency, sgi_adjacency, I_adjacency = na.adjacency_matrix(SG, biogrid, iid) 
-
+    #union_adjacency, sgi_adjacency, I_adjacency = na.adjacency_matrix(SG, biogrid, iid) 
+    #G_union, G_sgi, G_I, G_lcc_union, G_lcc_I = create_graph(union_adjacency, sgi_adjacency, I_adjacency)
 
 
 

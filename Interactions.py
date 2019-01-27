@@ -65,8 +65,7 @@ def _integrations(SG, biogrid, iid):
     return SGI_integrated, union_integrated
 
 # making a table to show some stats about two databases - seperatedly
-def detail_interactions_results(SG, biogrid, iid):
-    u_bio, u_iid, all_bio, all_iid = union_interactions(SG, biogrid, iid)
+def detail_interactions_results(u_bio, u_iid, all_bio, all_iid):
     
     db_names = ['BioGrid', 'IID']
     Num_of_founded_SG = list() 
@@ -86,14 +85,8 @@ def detail_interactions_results(SG, biogrid, iid):
     return interactions_detail
 
 # saving results in csv and txt formats...
-def save_results(SG, biogrid, iid):
-    
-    SGI_bio, SGI_iid = seed_gene_interactons(SG, biogrid, iid)
-    u_bio, u_iid, all_bio, all_iid = union_interactions(SG, biogrid, iid)
-    I_interactions = intersection_interactions(SG, biogrid, iid)
-    SGI_integrated, union_integrated = _integrations(SG, biogrid, iid)
-    interactions_detail = detail_interactions_results(SG, biogrid, iid)
-    
+def save_results(SGI_bio, SGI_iid, u_bio, u_iid, all_bio, all_iid, I_interactions, SGI_integrated, union_integrated, interactions_detail):
+        
     os.mkdir('Interactions_Results', mode = 0o777)
     os.chdir('Interactions_Results')
     
