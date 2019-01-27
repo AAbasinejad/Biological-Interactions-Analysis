@@ -103,30 +103,30 @@ def save_results(SG, biogrid, iid):
     # write details of results in a text file
     f = open('interactions_detailed_result.txt', 'w')
     f.write('seed_gene_interactions(a.k.a SGI) results....\n')
-    f.write('BioGrid data set SGI Interactions:', SGI_bio.shape[0], '\n')
-    f.write('iid data set SGI Interactions:', SGI_iid.shape[0], '\n')
+    f.write('BioGrid data set SGI Interactions: '+ str(SGI_bio.shape[0]) + '\n')
+    f.write('iid data set SGI Interactions: '+ str(SGI_iid.shape[0]) + '\n')
     
     # save the results in csv files - union
     u_bio.to_csv('Union_biogrid.csv', sep='\t')
     u_iid.to_csv('Union_iid.csv', sep='\t')
     # write details of results in a text file
     f.write('union_interactions results....\n')
-    f.write('BioGrid data set directed interactoms:', len(all_bio - set(SG)), '\n')
-    f.write('BioGrid data set union_interactions:', u_bio.shape[0], '\n')
-    f.write('iid data set directed interactoms:', len(all_iid - set(SG)), '\n')
-    f.write('iid data set union_interactions:', u_iid.shape[0], '\n')
+    f.write('BioGrid data set directed interactoms: '+ str(len(all_bio - set(SG))) + '\n')
+    f.write('BioGrid data set union_interactions: '+ str(u_bio.shape[0]) + '\n')
+    f.write('iid data set directed interactoms: '+ str(len(all_iid - set(SG))) + '\n')
+    f.write('iid data set union_interactions: '+ str(u_iid.shape[0]) + '\n')
     
     # intersection results
     I_interactions.to_csv('Intersection_interaction.csv', sep='\t')
     f.write('Intersection_interactions results....\n')
-    f.write('Number of interactions confirmed by both DBs:', I_interactions.shape[0], '\n')
+    f.write('Number of interactions confirmed by both DBs: '+ str(I_interactions.shape[0])+ '\n')
     
     # Integration results
     SGI_integrated.to_csv('SGI_integrated.csv', sep='\t')
     union_integrated.to_csv('union_integrated.csv', sep='\t')
     f.write('integration results....\n')
-    f.write('total SGI interactions:', SGI_integrated.shape[0], '\n')
-    f.write('total union interactions:', union_integrated.shape[0], '\n')
+    f.write('total SGI interactions: '+ str(SGI_integrated.shape[0])+ '\n')
+    f.write('total union interactions: '+ str(union_integrated.shape[0])+ '\n')
     
     # interactions_details
     interactions_detail.to_csv('interactions_detail_results.csv', sep='\t')

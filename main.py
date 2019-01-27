@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-
+import Basic_info as Bi
+import Network_Analysis as na
+import Interactions as i
 import pandas as pd
 import sys
 
@@ -24,7 +26,7 @@ def check_input_style(input_list):
     return SG, biogrid, iid
 def read_input(input_list):
     if (len(input_list)!= 4):
-        return
+        return 0 
     else:
         seed_gene_file = open(input_list[1], 'r')
         seed_genes = seed_gene_file.read().split(',')
@@ -43,13 +45,28 @@ def read_input(input_list):
     
 
 
-if __name__ == __main__:
+
+def main():    
     
+    input_list = sys.argv
+    SG, biogrid, iid = check_input_style(input_list)
+
+    # Basic Info
+
+    Bi.Basic_informations(SG, iid)
+
+    # Interactions
+
     
-input_list = sys.argv
+
+
+    # Netwrok analysis
+    union_adjacency, sgi_adjacency, I_adjacency = na.adjacency_matrix(SG, biogrid, iid) 
 
 
 
 
 
+if __name__ == '__main__':
+    main()
 
