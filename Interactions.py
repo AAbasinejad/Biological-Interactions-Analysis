@@ -13,8 +13,8 @@ def seed_gene_interactons(SG, biogrid, iid):
                               biogrid['interactor B'].isin(SG)]
     SGI_biogrid = SGI_biogrid.drop_duplicates(subset=['interactor A','interactor B'])
     
-    SGI_iid = iid.loc[iid['interactor'].isin(SG) & 
-                      iid['symbol2'].isin(SG)]
+    SGI_iid = iid.loc[iid['interactor A'].isin(SG) & 
+                      iid['interactor B'].isin(SG)]
     SGI_iid = SGI_iid.drop_duplicates(subset=['interactor A', 'interactor B'])
    
     return SGI_biogrid, SGI_iid
@@ -65,7 +65,7 @@ def _integrations(SG, biogrid, iid):
     return SGI_integrated, union_integrated
 
 # making a table to show some stats about two databases - seperatedly
-def detail_interactions_results(u_bio, u_iid, all_bio, all_iid):
+def detail_interactions_results(u_bio, u_iid, all_bio, all_iid, SG):
     
     db_names = ['BioGrid', 'IID']
     Num_of_founded_SG = list() 
@@ -85,7 +85,7 @@ def detail_interactions_results(u_bio, u_iid, all_bio, all_iid):
     return interactions_detail
 
 # saving results in csv and txt formats...
-def save_results(SGI_bio, SGI_iid, u_bio, u_iid, all_bio, all_iid, I_interactions, SGI_integrated, union_integrated, interactions_detail):
+def save_results(SGI_bio, SGI_iid, u_bio, u_iid, all_bio, all_iid, I_interactions, SGI_integrated, union_integrated, interactions_detail, SG):
         
     os.mkdir('Interactions_Results', mode = 0o777)
     os.chdir('Interactions_Results')
