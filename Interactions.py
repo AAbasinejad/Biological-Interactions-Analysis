@@ -45,7 +45,7 @@ def union_interactions(SG, biogrid, iid):
 def intersection_interactions(SG, biogrid, iid):
     u_bio, u_iid, all_bio, all_iid = union_interactions(SG, biogrid, iid)
     
-    I_interactions = pd.merge(u_iid, u_bio, how='inner')
+    I_interactions = pd.merge(u_iid, u_bio, how='inner', on=['interactor A', 'interactor B'])
     
     return I_interactions
 # Integrating the results of SGI and biogrid parts, (the interested result is this one)
