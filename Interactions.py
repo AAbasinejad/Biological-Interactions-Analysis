@@ -125,20 +125,8 @@ def save_results(SGI_bio, SGI_iid, u_bio, u_iid, all_bio, all_iid, I_interaction
     interactions_detail.to_csv('interactions_detail_results.csv', sep='\t')
     
     f.close()
+
     
     return
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     

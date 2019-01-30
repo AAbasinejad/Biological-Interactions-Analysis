@@ -43,7 +43,7 @@ def main():
 
     # Basic Info
 
-    #Bi.Basic_informations(SG, iid, biogrid)
+    Bi.Basic_informations(SG, iid, biogrid)
 
     # Interactions
     SGI_biogrid, SGI_iid = i.seed_gene_interactons(SG, biogrid, iid)
@@ -55,8 +55,10 @@ def main():
                    I_interactions, SGI_integrated, union_integrated, interactions_detail, SG)
     
     # Netwrok analysis
-    #union_adjacency, sgi_adjacency, I_adjacency = na.adjacency_matrix(SG, biogrid, iid) 
-    #G_union, G_sgi, G_I, G_lcc_union, G_lcc_I = create_graph(union_adjacency, sgi_adjacency, I_adjacency)
+    union_adjacency, sgi_adjacency, I_adjacency = na.adjacency_matrix(SG, biogrid, iid) 
+    G_union, G_sgi, G_I, G_lcc_union, G_lcc_I = na.create_graph(union_adjacency, sgi_adjacency, I_adjacency)
+    pd_mcl_u, pd_mcl_I, pd_louvain_u, pd_louvain_I = na.clustering(G_lcc_union, G_lcc_I, SG)
+    na.save_results(G_union, G_sgi, G_I, G_lcc_union, G_lcc_I, pd_mcl_u, pd_mcl_I, pd_louvain_u, pd_louvain_I)
 
 
 
