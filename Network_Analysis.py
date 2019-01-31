@@ -10,7 +10,6 @@ from scipy.stats import hypergeom
 import os
 
 
-
 def adjacency_matrix(SG, biogrid, iid):
     print('Netwrok Analysing...')
     sgi, union_ = Interactions._integrations(SG, biogrid, iid)
