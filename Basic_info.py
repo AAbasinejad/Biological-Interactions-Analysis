@@ -14,6 +14,7 @@ import os
 def Basic_informations(SG, iid, biogrid):
     os.mkdir('basic_info', mode = 0o777)
     os.chdir('basic_info')
+    
     gene_ids = list()
     uniprot_AC = list()
     official_gene_symbol = list()
@@ -22,7 +23,6 @@ def Basic_informations(SG, iid, biogrid):
     print('Fetching Basic Informations...')
     # the first loop is to get the gene IDs from ncbi.nlm.nih.gov which is also approved by HGNC
     for i in range(len(SG)):
-        print(i)
         ids = list()
         em_list = list()
         index_list = list()
@@ -59,7 +59,6 @@ def Basic_informations(SG, iid, biogrid):
     # third (and final) loop is to go through all the fetched gene_ids in first part (open the proper webpage on ncbi.nlm.nih.gov) and fetch the interested
     # informations: official_gene_symbol, official_protein_name, breif_description
     for i in range(len(gene_ids)):
-        print(i)
         desc_list = list()
         response = requests.get('https://www.ncbi.nlm.nih.gov/gene/'+ gene_ids[i])
         html = response.content
@@ -74,6 +73,7 @@ def Basic_informations(SG, iid, biogrid):
          'uniprot AC': uniprot_AC, 'GeneID': gene_ids, 'description': description}
     Basic_info = pd.DataFrame(data=d)        
     Basic_info.to_csv('Basic_Information.csv', sep='\t')
-    
+    os.chdir('..')
+    print('Fetching Information has been done successfully and results saved in a proper directory!')
     return
 

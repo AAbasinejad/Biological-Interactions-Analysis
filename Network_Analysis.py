@@ -12,6 +12,7 @@ import os
 
 
 def adjacency_matrix(SG, biogrid, iid):
+    print('Netwrok Analysing...')
     sgi, union_ = Interactions._integrations(SG, biogrid, iid)
     intersections = Interactions.intersection_interactions(SG, biogrid, iid)
     
@@ -29,7 +30,7 @@ def adjacency_matrix(SG, biogrid, iid):
     I_adjacency = pd.crosstab(intersections['interactor A'], intersections['interactor B'])
     idx = I_adjacency.columns.union(I_adjacency.index)
     I_adjacency = I_adjacency.reindex(index = idx, columns=idx, fill_value=0)
-    
+    print('adjacency matrices has been made!')
     return union_adjacency, sgi_adjacency, I_adjacency
 
 def create_graph(union_adjacency, sgi_adjacency, I_adjacency):
@@ -52,7 +53,7 @@ def create_graph(union_adjacency, sgi_adjacency, I_adjacency):
     
     G_lcc_I = max(nx.connected_component_subgraphs(G_I), key=len)
     G_lcc_I.name = 'Large Connected Component of G_I'
-    
+    print('Graphs Created!')
     return G_union, G_sgi, G_I, G_lcc_union, G_lcc_I
 
 
@@ -162,13 +163,13 @@ def clustering(G_lcc_union, G_lcc_I, SG):
                'Ratio': ratio_louvain_I, 'p-Value': pval_louvain_I, 'Putative disease': putative_louvain_I}
     pd_louvain_I = pd.DataFrame(data = d_louvain_I)
     
-        
+    print('Clustering has been done!')
     return pd_mcl_u, pd_mcl_I, pd_louvain_u, pd_louvain_I
     
 def save_results(G_union, G_sgi, G_I, G_lcc_union, G_lcc_I, pd_mcl_u, pd_mcl_I, pd_louvain_u, pd_louvain_I):
 
     os.mkdir('Network_Analysis_results', mode = 0o777)
-    os.chdir('../Network_Analysis_results')
+    os.chdir('Network_Analysis_results')
     
     f = open('Network_meesures.txt', 'w')
     
@@ -313,7 +314,7 @@ def save_results(G_union, G_sgi, G_I, G_lcc_union, G_lcc_I, pd_mcl_u, pd_mcl_I, 
     pd_mcl_I.to_csv('MCL_intersection_results.csv', sep='\t')
     pd_louvain_u.to_csv('louvain_union_results.csv', sep='\t') 
     pd_louvain_I.to_csv('louvain_intersection_results.csv', sep='\t')
-    
-    
+    os.chdir('..')
+    print('Network Analysing has been done successfully and results saved in a proper directory!')
     return
     

@@ -9,6 +9,7 @@ import os
 
 # all interactions that involves seed genes only
 def seed_gene_interactons(SG, biogrid, iid):
+    print('Computing Interactions...')
     SGI_biogrid = biogrid.loc[biogrid['interactor A'].isin(SG) & 
                               biogrid['interactor B'].isin(SG)]
     SGI_biogrid = SGI_biogrid.drop_duplicates(subset=['interactor A','interactor B'])
@@ -125,8 +126,9 @@ def save_results(SGI_bio, SGI_iid, u_bio, u_iid, all_bio, all_iid, I_interaction
     interactions_detail.to_csv('interactions_detail_results.csv', sep='\t')
     
     f.close()
-
+    os.chdir('..')
+    print('Computing Interactions has been done successfully results saved in a proper directory!')
     
     return
     
-    
+  
