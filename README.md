@@ -54,7 +54,7 @@ For better understanding of this project, some terms and abbreviations will be d
 *Note:* In general in both Union and Intersection interactions, the interactions between interactomes which has direct interaction with a [seed_gene](https://github.com/AAbasinejad/Biological-Interactions-Analysis/blob/master/seed_genes.txt) has been considered.<br/>
 *Note:* In code, variables with sgi, u an I signs refers to SGI, Union_Interactions and Intersection_Interactions respectively.<br/>
 **p-value:** p-value is to measure under- or over-enrichment based on the cumulative distribution function (CDF) of the hypergeometric distribution.<br/> 
-*Note:* for computing p-value you can use [Hypergeometric p-value calculator](http://systems.crump.ucla.edu/hypergeometric/index.php) or `hypergeom` library from `scipy.stats`.<br/>
+*Note:* for computing p-value (in general) you can use [Hypergeometric p-value calculator](http://systems.crump.ucla.edu/hypergeometric/index.php) or `hypergeom` library from `scipy.stats` in python.<br/>
 **Note:** in this project we will often use the terms ‘gene’ and ‘protein’ as synonyms, even if they are not, from the purely biological point of view.<br/>
 
 
