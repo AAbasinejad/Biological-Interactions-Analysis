@@ -5,8 +5,6 @@ import pandas as pd
 import os
 
 
-
-
 # all interactions that involves seed genes only
 def seed_gene_interactons(SG, biogrid, iid):
     print('Computing Interactions...')
