@@ -66,4 +66,4 @@ In order to find how to use it, check the source page as well. ;)
 
 ### Results and discussion
 ------
-TBD ASAP as well... ;)
+TBD ASAP... ;)
